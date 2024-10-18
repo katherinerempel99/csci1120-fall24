@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
+
+bool isVowel(char ch)
+{
+    // Make the list of vowels
+    char vowels[] = "aeiouAEIOU";
+    if (strchr(vowels, ch) != NULL)
+        return true;
+    else return false;
+}
+
+string E;
+int sum = 0;
+int main() {
+    // Write your main here
+    cout << "Input a sequence of characters: " << endl;
+    cin >> E;
+
+    int len = E.length();
+
+    for (int i = 0; i < len; i++) {
+        if (isVowel(E[i])==true)
+            sum += 1;
+    }
+
+    cout << "There are " << sum << " vowels in this sentence. "<< endl;
+    return 0;
+}

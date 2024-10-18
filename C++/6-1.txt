@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+bool isPalindrome(string str) {
+    int length = str.length();
+    for (int i = 0; i < length / 2; i++) {
+        if (str[i] != str[length - 1 - i]) {
+            return false;
+        } // if
+    } // for loop
+    return true;
+} // isPalindrome
+
+string convertToLowercase(const string& str) {
+    string result = "";
+
+    for (char ch : str) {
+        // Convert each character to lowercase using tolower
+        result += tolower(ch);
+    }
+
+    return result;
+}
+
+int main() {
+    // Write your main here
+    string str;
+    cout << "Enter a word: " << endl;
+    cin >> str;
+    string str1 = convertToLowercase(str);
+    isPalindrome(str1);
+    if (isPalindrome(str1) == true)
+        cout << str << " is a palindrome.";
+    else { cout << str << " is not a palindrome."; }
+    cout << endl;
+    return 0;
+}
+

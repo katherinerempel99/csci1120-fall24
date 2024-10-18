@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
+char E;
+bool isVowel(char ch)
+{
+    // Make the list of vowels
+    char vowels[] = "aeiouAEIOU";
+    if (strchr(vowels, ch) != NULL)
+        return true;
+    else return false;
+}
+int main() {
+    // Write your main here
+    cout << "Enter a letter: " << endl;
+    cin >> E;
+
+    isVowel(E);
+    cout << E << " is a vowel: " << isVowel(E) << endl;
+
+    return 0;
+}
+
