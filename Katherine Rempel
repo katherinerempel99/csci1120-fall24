@@ -1,0 +1,147 @@
+// studentType.h
+#include <string>
+
+class studentType {
+private:
+    std::string firstName;
+    std::string lastName;
+    char courseGrade;
+    int testScore;
+    int programmingScore;
+    double GPA;
+
+    void setGrade();
+
+public:
+    // Default constructor
+    studentType();
+
+    // Parameterized constructor
+    studentType(std::string fName, std::string lName, char cGrade, int tScore, int pScore, double gpa);
+
+    // Setters
+    void setFirstName(std::string val);
+    void setLastName(std::string val);
+    void setTestScore(int val);
+    void setProgScore(int val);
+    void setGPA(double val);
+
+    // Getters
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    char getGrade() const;
+    int getTestScore() const;
+    int getProgScore() const;
+    double getGPA() const;
+
+    // Print
+    void print() const;
+};
+// main.cpp
+#include <iostream>
+#include <string>
+#include "studentType.h"
+
+using namespace std;
+
+int main()
+{
+    studentType student;
+    studentType newStudent("Brain", "Johnson", '*', 85, 95, 3.89);
+
+    student.print();
+    cout << "***************" << endl << endl;
+
+    newStudent.print();
+    cout << "***************" << endl << endl;
+
+    return 0;
+}
+
+// studentTypeImp.cpp
+#include "studentType.h"
+#include <iostream>
+
+using namespace std;
+
+// Default constructor
+studentType::studentType() : firstName(""), lastName(""), courseGrade('*'), testScore(0), programmingScore(0), GPA(0.0) {}
+
+// Parameterized constructor
+studentType::studentType(string fName, string lName, char cGrade, int tScore, int pScore, double gpa)
+    : firstName(fName), lastName(lName), courseGrade(cGrade), testScore(tScore), programmingScore(pScore), GPA(gpa) {
+    setGrade();
+}
+
+// Private member function to set the grade
+void studentType::setGrade() {
+    int averageScore = (testScore + programmingScore) / 2;
+    if (averageScore >= 90) {
+        courseGrade = 'A';
+    } else if (averageScore >= 80) {
+        courseGrade = 'B';
+    } else if (averageScore >= 70) {
+        courseGrade = 'C';
+    } else if (averageScore >= 60) {
+        courseGrade = 'D';
+    } else {
+        courseGrade = 'F';
+    }
+}
+
+// Setters
+void studentType::setFirstName(string val) {
+    firstName = val;
+}
+
+void studentType::setLastName(string val) {
+    lastName = val;
+}
+
+void studentType::setTestScore(int val) {
+    testScore = val;
+    setGrade();
+}
+
+void studentType::setProgScore(int val) {
+    programmingScore = val;
+    setGrade();
+}
+
+void studentType::setGPA(double val) {
+    GPA = val;
+}
+
+// Getters
+string studentType::getFirstName() const {
+    return firstName;
+}
+
+string studentType::getLastName() const {
+    return lastName;
+}
+
+char studentType::getGrade() const {
+    return courseGrade;
+}
+
+int studentType::getTestScore() const {
+    return testScore;
+}
+
+int studentType::getProgScore() const {
+    return programmingScore;
+}
+
+double studentType::getGPA() const {
+    return GPA;
+}
+
+// Print function
+void studentType::print() const {
+    cout << "Name: " << firstName << " " << lastName << endl;
+    cout << "Grade: " << courseGrade << endl;
+    cout << "Test score: " << testScore << endl;
+    cout << "Programming score: " << programmingScore << endl;
+    cout << "GPA: " << GPA << endl;
+}
